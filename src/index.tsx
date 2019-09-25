@@ -1,16 +1,22 @@
-import * as React from "react";
-import { render } from "react-dom";
+import React from 'react';
+import createSagaMiddleware from 'redux-saga';
+import { render } from 'react-dom';
+import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+import { logger } from 'redux-logger';
+import reducer from './reducers';
+import App from './components/App';
+import rootSaga from './sagas';
+const sagaMiddleware = createSagaMiddleware();
 
-import "./styles.css";
-
-function App() {
-  return (
-    <div className="App">
-      <h1>Hello CodeSandbox</h1>
-      <h2>Start editing to see some magic happen!</h2>
-    </div>
-  );
-}
-
-const rootElement = document.getElementById("root");
-render(<App />, rootElement);
+const store = createStore(
+   reducer,
+   applyMiddleware(sagaMiddleware, logger),
+);
+sagaMiddleware.run(rootSaga);
+render(
+   <Provider store={store}>
+     <App />
+   </Provider>,
+document.getElementById('root'),
+);
