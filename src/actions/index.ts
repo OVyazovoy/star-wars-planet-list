@@ -1,4 +1,4 @@
-import {UPDATE_SEARCH_TEXT} from '../constants/actions';
+import {UPDATE_SEARCH_TEXT} from './constants';
 
 
 export const updateSearchText = (searchText: string) => ({
