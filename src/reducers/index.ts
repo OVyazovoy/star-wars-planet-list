@@ -1,5 +1,5 @@
 import {IPlanet} from '../api/getPlanetList';
-import {UPDATE_SEARCH_TEXT, SET_PLANET_LIST, CLEAR_SEARCH_TEXT, START_LOAD_PLANET_LIST} from '../actions/constants'
+import {UPDATE_SEARCH_TEXT, SET_PLANET_LIST, CLEAR_SEARCH_TEXT, START_LOAD_PLANET_LIST, STOP_LOAD_PLANET_LIST} from '../actions/constants'
 
 export interface IState {
   searchText : string,
@@ -41,10 +41,11 @@ const reducer = (state = initialState, action : {
         isLoading: true
       }
     }
-    case START_LOAD_PLANET_LIST: {
+    case STOP_LOAD_PLANET_LIST: {
       return {
         ...state,
-        isLoading: false
+        isLoading: false,
+        list: [],
       }
     }
     case SET_PLANET_LIST:

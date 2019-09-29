@@ -1,0 +1,32 @@
+.textField {
+  position: relative;
+}
+
+.input {
+  box-sizing: border-box;
+
+  width: 100%;
+
+  padding-right: 1rem;
+
+  font-size: 1rem;
+  line-height: 1.2rem;
+
+  border: none;
+  border-bottom: 1px solid #90CAF9;
+
+  transition: border-bottom 300ms;
+}
+
+.input:active, .input:focus {
+  outline: none;
+  border-bottom: 1px solid #2196F3;
+}
+
+.clearButton {
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  line-height: 1.2rem;
+}

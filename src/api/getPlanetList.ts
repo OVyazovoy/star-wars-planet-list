@@ -10,7 +10,7 @@ interface IResponse {
   }
 }
 
-function * getPlanetList(searchText : string) : IterableIterator < Promise < IResponse >> {
+function* getPlanetList(searchText : string) : IterableIterator < Promise < IResponse >> {
   return yield axios.get(url, {
     params: {
       search: searchText,
