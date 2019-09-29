@@ -1,4 +1,4 @@
-import {UPDATE_SEARCH_TEXT, SET_PLANET_LIST, CLEAR_SEARCH_TEXT} from './constants';
+import {UPDATE_SEARCH_TEXT, SET_PLANET_LIST, CLEAR_SEARCH_TEXT, START_LOAD_PLANET_LIST, STOP_LOAD_PLANET_LIST} from './constants';
 
 
 export const updateSearchText = (searchText: string) => ({
@@ -17,4 +17,12 @@ export const setPlanetList = (list: any) => ({
 
 export const clearSearchText = () => ({
   type: CLEAR_SEARCH_TEXT,
+})
+
+export const startLoadingPlanetList = () => ({
+  type: START_LOAD_PLANET_LIST,
+})
+
+export const stopLoadingPlanetList = () => ({
+  type: STOP_LOAD_PLANET_LIST,
 })
