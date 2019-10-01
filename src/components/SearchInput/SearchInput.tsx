@@ -7,8 +7,11 @@ import {updateSearchText, stopLoadingPlanetList} from '../../actions';
 import ClearButton from '../ClearButton';
 
 import styles from './SearchInput.module.css'
+interface Props {
+  children: JSX.Element
+}
 
-const SearchInput = () => {
+const SearchInput = ({children}: Props) => {
   const inputEl = useRef<HTMLInputElement>(null);
   const dispatch = useDispatch();
   const searchText = useSelector(getSearchText, shallowEqual)
@@ -35,6 +38,7 @@ const SearchInput = () => {
         searchText &&
         <ClearButton className={styles.clearButton} onClick={onClearBtnClick}/>
       }
+      {children}
     </div>
   );
 }
