@@ -1,0 +1,23 @@
+.btn{
+  border: none;
+  background: none;
+
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.btnText{
+  font-size: 1rem;
+  text-align: left;
+}
+
+.btn:hover,
+.btn:focus,
+.btn:active {
+  outline: none;
+  background-color: #e8e8e8;
+}
+
+.btnText > b {
+  font-weight: bold;
+}
