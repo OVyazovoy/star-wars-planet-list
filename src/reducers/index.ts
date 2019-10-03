@@ -1,29 +1,71 @@
-import {UPDATE_SEARCH_TEXT} from '../actions/constants'
+import {IPlanet} from '../api/getPlanetList';
+import {UPDATE_SEARCH_TEXT, SET_PLANET_LIST, CLEAR_SEARCH_TEXT, START_LOAD_PLANET_LIST, STOP_LOAD_PLANET_LIST, SET_SEARCH_TEXT} from '../actions/constants'
 
 export interface IState {
-  searchText: string,
-  isLoading: boolean,
-  isLoadedOnce: boolean,
-  list: [],
+  searchText : string,
+  isLoading : boolean,
+  isLoadedOnce : boolean,
+  list : IPlanet[]
 }
 
-const initialState: IState = {
+const initialState : IState = {
   searchText: '',
   isLoading: false,
   isLoadedOnce: false,
   list: []
 }
 
-const reducer = (state = initialState, action: { type: string, payload: any }) => {
+const reducer = (state = initialState, action : {
+  type: string,
+  payload: any
+}) => {
   switch (action.type) {
-     case UPDATE_SEARCH_TEXT:
+    case UPDATE_SEARCH_TEXT:
+      {
         return {
           ...state,
-          isLoading: true,
           searchText: action.payload.searchText
         };
-     default:
-        return state;
+      }
+    case SET_SEARCH_TEXT:
+      {
+        return {
+          ...state,
+          list: [],
+          searchText: action.payload.searchText
+        }
+      }
+    case CLEAR_SEARCH_TEXT:
+      {
+        return {
+          ...state,
+          searchText: '',
+          list: []
+        };
+      }
+    case START_LOAD_PLANET_LIST: {
+      return {
+        ...state,
+        isLoading: true
+      }
+    }
+    case STOP_LOAD_PLANET_LIST: {
+      return {
+        ...state,
+        isLoading: false,
+        list: [],
+      }
+    }
+    case SET_PLANET_LIST:
+      {
+        return {
+          ...state,
+          isLoading: false,
+          list: action.payload.list
+        }
+      }
+    default:
+      return state;
   }
 };
 

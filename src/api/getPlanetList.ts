@@ -1,11 +1,22 @@
 import axios from 'axios'
-const url = 'https://swapi.co/api/planets?search=';
-const config = {
-  headers: {'Access-Control-Allow-Origin': '*'}
-};
+const url = 'https://swapi.co/api/planets';
 
-function* getPlanetList (searchText: string){
-  return yield axios.get(`${url}${searchText}`, config)
+export interface IPlanet {
+  name: string
+}
+interface IResponse {
+  data : {
+    results: IPlanet[]
+  }
 }
 
-export default getPlanetList
+function* getPlanetList(searchText : string) : IterableIterator < Promise < IResponse >> {
+  return yield axios.get(url, {
+    params: {
+      search: searchText,
+      format: 'json'
+    }
+  })
+}
+
+export default getPlanetList;
