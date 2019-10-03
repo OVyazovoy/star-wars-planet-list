@@ -19,4 +19,4 @@ function* getPlanetList(searchText : string) : IterableIterator < Promise < IRes
   })
 }
 
-export default getPlanetList
+export default getPlanetList;

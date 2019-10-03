@@ -1,2 +1,1 @@
-
-export {default} from './ClearButton'
+export {default} from './ClearButton';
